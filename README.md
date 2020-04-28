@@ -123,7 +123,7 @@ sso:
   sp:
     entity-id: 당신의 SP의 엔티티아이디
     signing-algorithm: http://www.w3.org/2000/09/xmldsig#rsa-sha1
-    login-url: /secured
+    login-url: /로그인후 돌아올 라우트경로
   key-store:
     file: classpath:jks 파일
     alias: samlKey
