@@ -1,0 +1,14 @@
+version: '3'
+services:
+  nginx:
+    build: .
+    ports:
+      - "80:80"
+  backend:
+    image: your-app-image
+    ports:
+      - "8080:8080"
+    environment:
+      - PROFILE=dev
+      - SSO.SP.ENTITY_BASE_URL=http://localhost
+      - LB=http://localhost:80
