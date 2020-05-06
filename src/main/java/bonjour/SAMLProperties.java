@@ -33,6 +33,7 @@ public class SAMLProperties {
         String errorUrl = "/error";
         String relayState;
         boolean forceAuthN;
+        boolean alwaysUseDefaultTargetUrl;
         // int responseSkew;
     }
 

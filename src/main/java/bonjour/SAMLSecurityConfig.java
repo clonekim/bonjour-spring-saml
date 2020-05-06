@@ -85,6 +85,7 @@ public class SAMLSecurityConfig extends WebSecurityConfigurerAdapter {
                 "/**/*.jpg",
                 "/**/*.jpeg",
                 "/**/*.png",
+                "/**/*.ttf",
                 "/**/*.woff",
                 "/**/*.woff2",
                 "/**/*.otf",
@@ -265,7 +266,9 @@ public class SAMLSecurityConfig extends WebSecurityConfigurerAdapter {
     @Bean
     public SimpleUrlLogoutSuccessHandler successLogoutHandler() {
         SimpleUrlLogoutSuccessHandler successLogoutHandler = new SimpleUrlLogoutSuccessHandler();
-        successLogoutHandler.setDefaultTargetUrl(samlProperties.getSp().getLogoutUrl());
+        successLogoutHandler.setDefaultTargetUrl(samlProperties.getSp().logoutUrl);
+        successLogoutHandler.setAlwaysUseDefaultTargetUrl(samlProperties.getSp().alwaysUseDefaultTargetUrl);
+
         return successLogoutHandler;
     }
 
@@ -297,8 +300,8 @@ public class SAMLSecurityConfig extends WebSecurityConfigurerAdapter {
         ResourceBackedMetadataProvider provider = new ResourceBackedMetadataProvider(timer, samlProperties.getIdp().getMetadataUrl());
         provider.setParserPool(parserPool());
         ExtendedMetadataDelegate extendedMetadataDelegate = new ExtendedMetadataDelegate(provider, extendedMetadata());
-        extendedMetadataDelegate.setMetadataTrustCheck(samlProperties.getIdp().isMetadataTrust());
-        extendedMetadataDelegate.setMetadataRequireSignature(samlProperties.getIdp().isRequireSignature());
+        extendedMetadataDelegate.setMetadataTrustCheck(samlProperties.getIdp().metadataTrust);
+        extendedMetadataDelegate.setMetadataRequireSignature(samlProperties.getIdp().requireSignature);
         timer.purge();
         return extendedMetadataDelegate;
     }
