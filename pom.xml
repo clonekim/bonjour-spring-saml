@@ -49,4 +49,11 @@
     </dependencies>
 
 
+    <distributionManagement>
+        <repository>
+            <id>maven-releases</id>
+            <url>http://10.46.44.5:8081/repository/maven-releases/</url>
+        </repository>
+    </distributionManagement>
+
 </project>
