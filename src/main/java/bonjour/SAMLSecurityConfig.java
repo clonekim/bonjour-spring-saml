@@ -65,12 +65,8 @@ public class SAMLSecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
 
                 .antMatchers(
-                        "/",
-                        "/favicon.ico",
-                        "/error",
-                        "/health",
-                        "/token",
-                        "/saml/**").permitAll().anyRequest().authenticated()
+                        samlProperties.getNotAuthorized().stream().toArray(String[]::new)
+                      ).permitAll().anyRequest().authenticated()
         ;
     }
 

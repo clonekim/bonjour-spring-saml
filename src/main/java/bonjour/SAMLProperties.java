@@ -1,10 +1,14 @@
 package bonjour;
 
+
 import lombok.Getter;
 import lombok.Setter;
 import org.opensaml.util.resource.ClasspathResource;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.core.io.Resource;
+
+import javax.validation.constraints.NotNull;
+import java.util.List;
 
 @Getter
 @Setter
@@ -13,6 +17,9 @@ public class SAMLProperties {
     private IdpProperties idp;
     private SpProperties sp;
     private KeyStoreProperties keyStore;
+
+    @NotNull
+    private List<String> notAuthorized;
 
     @Getter
     @Setter
