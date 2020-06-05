@@ -142,6 +142,10 @@ public class SAMLSecurityConfig extends WebSecurityConfigurerAdapter {
     @Bean
     public WebSSOProfileConsumer webSSOprofileConsumer() {
         WebSSOProfileConsumerImpl ssoProfileConsumer = new WebSSOProfileConsumerImpl();
+
+        if(samlProperties.getSp().maxAuthenticationAge > 0)
+            ssoProfileConsumer.setMaxAuthenticationAge( samlProperties.getSp().maxAuthenticationAge);
+
         return ssoProfileConsumer;
     }
 

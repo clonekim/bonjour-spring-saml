@@ -41,6 +41,7 @@ public class SAMLProperties {
         String relayState;
         boolean forceAuthN;
         boolean alwaysUseDefaultTargetUrl;
+        long maxAuthenticationAge;
         // int responseSkew;
     }
 
